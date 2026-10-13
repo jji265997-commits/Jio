@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel — FamPay Gateway</title>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+
+<div id="login-screen" class="login-screen">
+  <div class="login-card">
+    <h1>🔐 Admin Login</h1>
+    <p class="sub">FamPay Gateway Management</p>
+    <input type="text" id="login-user" placeholder="Username" autocomplete="username"/>
+    <input type="password" id="login-pass" placeholder="Password" autocomplete="current-password"/>
+    <button onclick="login()">Login</button>
+    <div id="login-error" class="err"></div>
+  </div>
+</div>
+
+<div id="dashboard" style="display:none">
+  <aside class="sidebar">
+    <h2>💳 FamPay</h2>
+    <nav>
+      <a onclick="showTab('overview')" class="active" data-tab="overview">📊 Dashboard</a>
+      <a onclick="showTab('orders')" data-tab="orders">📦 Orders</a>
+      <a onclick="showTab('settings')" data-tab="settings">⚙️ Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <p>👤 <span id="admin-name"></span></p>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section id="tab-overview" class="tab active">
+      <h1>Dashboard Overview</h1>
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-label">Paid Orders</div>
+          <div class="stat-value" id="stat-paid">0</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-label">Pending Orders</div>
+          <div class="stat-value" id="stat-pending">0</div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value" id="stat-revenue">₹0</div>
+        </div>
+        <div class="stat-card teal">
+          <div class="stat-label">Today's Revenue</div>
+          <div class="stat-value" id="stat-today">₹0</div>
+        </div>
+      </div>
+      <button onclick="loadStats()" class="refresh-btn">🔄 Refresh</button>
+    </section>
+
+    <section id="tab-orders" class="tab">
+      <h1>Orders Management</h1>
+      <div class="filters">
+        <input type="text" id="search-input" placeholder="🔍 Search order ID / name / email"/>
+        <select id="status-filter">
+          <option value="all">All Status</option>
+          <option value="paid">Paid</option>
+          <option value="pending">Pending</option>
+        </select>
+        <button onclick="loadOrders()">Search</button>
+        <button onclick="exportCSV()" class="export-btn">⬇️ Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>UTR</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orders-tbody">
+            <tr><td colspan="8" class="empty">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button onclick="prevPage()" id="prev-btn">← Prev</button>
+        <span id="page-info">Page 1</span>
+        <button onclick="nextPage()" id="next-btn">Next →</button>
+      </div>
+    </section>
+
+    <section id="tab-settings" class="tab">
+      <h1>Settings</h1>
+      <div class="settings-card">
+        <h3>🔑 Change Password</h3>
+        <input type="password" id="old-pass" placeholder="Old Password"/>
+        <input type="password" id="new-pass" placeholder="New Password (min 6 chars)"/>
+        <input type="password" id="confirm-pass" placeholder="Confirm New Password"/>
+        <button onclick="changePassword()">Update Password</button>
+        <div id="pwd-msg"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

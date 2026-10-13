@@ -1,0 +1,76 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 20px;
+}
+
+.container { width: 100%; max-width: 420px; }
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+h1 { color: #333; margin-bottom: 8px; }
+.subtitle { color: #888; margin-bottom: 24px; font-size: 14px; }
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+input:focus { border-color: #667eea; }
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover { opacity: 0.9; transform: translateY(-2px); }
+button:disabled { background: #ccc; cursor: not-allowed; }
+
+#qrcode {
+  margin: 20px auto;
+  padding: 15px;
+  background: #fff;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.upi-btn {
+  display: block;
+  padding: 12px;
+  background: #00b894;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.hint { font-size: 13px; color: #888; margin: 12px 0; }
+
+#status-msg { margin-top: 15px; font-weight: 600; }
+.paid { color: #00b894; }
+.pending { color: #f39c12; }
+.error { color: #e74c3c; }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FamPay Gateway</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>💳 FamPay Gateway</h1>
+      <p class="subtitle">UPI se instant payment karein</p>
+
+      <div id="form-section">
+        <input type="text" id="name" placeholder="Aapka Naam" />
+        <input type="email" id="email" placeholder="Email" />
+        <input type="number" id="amount" placeholder="Amount (₹)" />
+        <button onclick="createOrder()">Pay Now</button>
+      </div>
+
+      <div id="payment-section" style="display:none">
+        <h2>₹<span id="pay-amount"></span></h2>
+        <p>Order ID: <b id="order-id"></b></p>
+        <div id="qrcode"></div>
+        <a id="upi-link" class="upi-btn">📱 UPI App se Pay Karein</a>
+        <p class="hint">Payment ke baad "Verify" button dabayein</p>
+        <button onclick="verifyPayment()" id="verify-btn">✅ Verify Payment</button>
+        <div id="status-msg"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
