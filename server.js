@@ -268,7 +268,7 @@ app.post('/api/admin/change-password', requireAuth, (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+  res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
 app.listen(process.env.PORT || 3000, () => {
