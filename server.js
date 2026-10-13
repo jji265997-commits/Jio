@@ -13,7 +13,7 @@ const db = require('./database');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static(__dirname));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
